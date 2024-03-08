@@ -9,6 +9,7 @@
 <body>
     <div class="certificate">
         <h1 id="studentName"></h1>
+        <h1 id="collegeName"></h1>
         
         <div class="verified">
             <img src="./Checkmark.png" alt="Verified Checkmark">
@@ -18,26 +19,38 @@
     </div>
 
     <script>
-        function getSerialNumber() {
+        function getNameParameter() {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get('name');
         }
-        function updateStudentName() {
-            const serialNumber = getSerialNumber();
-            const studentNames = {
-                'Mukesh': 'Panimalar Engineering College',
-                'Mukunth': 'Engineering Clg',
+
+        function updateStudentAndCollegeNames() {
+            const nameParameter = getNameParameter();
+            const studentData = {
+                'Mukesh': {
+                    studentName: 'Mukesh',
+                    collegeName: 'Panimalar Engineering College'
+                },
+                'Mukunth': {
+                    studentName: 'Mukunth',
+                    collegeName: 'Engineering College'
+                }
             };
 
             const studentNameElement = document.getElementById('studentName');
+            const collegeNameElement = document.getElementById('collegeName');
 
-            if (serialNumber && studentNames[serialNumber]) {
-                studentNameElement.innerText = studentNames[serialNumber];
+            if (nameParameter && studentData[nameParameter]) {
+                const { studentName, collegeName } = studentData[nameParameter];
+                studentNameElement.innerText = studentName;
+                collegeNameElement.innerText = collegeName;
             } else {
-                studentNameElement.innerText = 'Invalid Serial Number';
+                studentNameElement.innerText = 'Invalid Name';
+                collegeNameElement.innerText = '';
             }
         }
-        window.onload = updateStudentName;
+
+        window.onload = updateStudentAndCollegeNames;
     </script>
 </body>
 </html>
