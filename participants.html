@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="certificate">
-        <h1 id="studentName">Mukesh.k</h1>
+        <h1 id="studentName"></h1>
         
         <div class="verified">
             <img src="./Checkmark.png" alt="Verified Checkmark">
@@ -20,13 +20,13 @@
     <script>
         function getSerialNumber() {
             const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get('sno');
+            return urlParams.get('name');
         }
         function updateStudentName() {
             const serialNumber = getSerialNumber();
             const studentNames = {
-                '1': 'Mukesh',
-                '2': 'Mukunth',
+                'Mukesh': 'Panimalar Engineering College',
+                'Mukunth': 'Engineering Clg',
             };
 
             const studentNameElement = document.getElementById('studentName');
