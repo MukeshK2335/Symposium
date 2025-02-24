@@ -20,6 +20,43 @@
     </div>
 
     <script>
+        document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+});
+        var devtools = /./;
+devtools.toString = function () {
+    this.opened = true;
+};
+
+setInterval(function () {
+    if (devtools.opened) {
+        alert('Developer tools are open! This is not allowed.');
+        // Optionally, redirect the user or perform other actions.
+    }
+}, 1000);
+document.onkeydown = function (e) {
+    if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+        e.preventDefault();  // Block the key action
+        alert("Access to developer tools is disabled.");
+    }
+};
+(function () {
+    if (typeof console === "object") {
+        console.log = function () {};
+        console.debug = function () {};
+        console.info = function () {};
+        console.warn = function () {};
+        console.error = function () {};
+    }
+})();
+document.onkeydown = function (e) {
+    if (e.ctrlKey && e.key === 'U') {  // Ctrl+U to view page source
+        e.preventDefault();
+        alert('Viewing page source is disabled.');
+    }
+};
+
+
         function getNameParameter() {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get('name');
