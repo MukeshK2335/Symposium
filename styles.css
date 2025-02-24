@@ -34,5 +34,12 @@ body {
     font-weight: bold;
     color: #27ae60; /* Green color */
 }
+.verified img:last-of-type {
+    width: 150px; /* Adjust size as needed */
+    height: auto;
+}
+
+
+
 
 
